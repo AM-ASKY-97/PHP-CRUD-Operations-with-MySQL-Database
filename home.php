@@ -18,8 +18,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="css/table.css">
-
-
+    
+    <style>
+        .error {
+            color: #F00;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,7 +36,7 @@
                             <h2>Manage <b>Student</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Student</span></a>
                         </div>
                     </div>
                 </div>
@@ -55,26 +59,32 @@
                 </form>
                 <div class="clearfix">
                     <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                    
                     <ul class="pagination">
                         <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item active" ><a href="#" class="page-link">1</a></li>
                         <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item "><a href="#" class="page-link">3</a></li>
                         <li class="page-item"><a href="#" class="page-link">4</a></li>
                         <li class="page-item"><a href="#" class="page-link">5</a></li>
                         <li class="page-item"><a href="#" class="page-link">Next</a></li>
                     </ul>
+
+                   
                 </div>
+
+                
             </div>
         </div>
     </div>
+    <div class="text-center">create by <a href="http://am-asky97.herokuapp.com/">A. M. Asky</a> </div>
     <!-- Edit Modal HTML -->
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="save">
+                <form id="save" autocomplete="off">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add Employee</h4>
+                        <h4 class="modal-title">Add <b>Student</b></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
@@ -84,24 +94,24 @@
 
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>          
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea class="form-control" id="address" name="address" required></textarea>
+                            <textarea class="form-control" id="address" name="address"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone" required>
+                            <input type="text" class="form-control" id="phone" name="phone">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="button" class="btn btn-success save" value="Add">
+                        <input type="submit" class="btn btn-success save" value="Add">
                     </div>
                 </form>
             </div>
@@ -115,7 +125,7 @@
             <div class="modal-content">
                 <form id="update">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Employee</h4>
+                        <h4 class="modal-title">Edit <b>Student</b></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -144,7 +154,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="button" class="btn btn-info update" value="Save">
+                        <input type="submit" class="btn btn-info update" value="Save">
                     </div>
                 </form>
             </div>
@@ -156,7 +166,7 @@
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
-                        <h4 class="modal-title">Delete Employee</h4>
+                        <h4 class="modal-title">Delete <b>Student</b></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -172,10 +182,8 @@
         </div>
     </div>
     <script src="my_script.js"></script>
-
-    <?php
-        session_reset();
-    ?>
+    <script src="js/validation/jquery.validate.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -14,6 +14,12 @@
 
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .error {
+            color: #F00;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -30,44 +36,39 @@
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                                    <form class="mx-1 mx-md-4" id="form">
+                                    <form class="mx-1 mx-md-4" id="Siform">
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="name" class="form-control" />
-                                                <label class="form-label" for="form3Example1c">User Name</label>
-                                                <div class="text-danger" id="messageName"></div>
+                                                <label class="form-label" for="form3Example1c">User Name</label>    
+                                                <input type="text" id="sendName" class="form-control" name="sendName"/>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="email" class="form-control" />
                                                 <label class="form-label" for="form3Example3c">Your Email</label>
-                                                <div class="text-danger" id="messageEmail"></div>
+                                                <input type="email" id="sendEmail" class="form-control" name="sendEmail"/>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="password" class="form-control" />
                                                 <label class="form-label" for="form3Example4c">Password</label>
-                                                <div class="text-danger" id="messagePassword"></div>
+                                                <input type="password" id="sendPass" class="form-control" name="sendPass"/> 
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="conPassword" class="form-control" />
                                                 <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                                                <div class="text-danger" id="messageRepeatPassword"></div>
-                                                <div class="text-danger" id="RepeatPassword"></div>
+                                                <input type="password" id="sendconPass" class="form-control" name="sendconPass"/>
                                             </div>
                                         </div>
 
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="button" class="btn btn-primary singup" name="singup"><i class="fa fa-plus-circle" aria-hidden="true"></i> Register</button>
+                                            <input type="submit" class="btn btn-primary singup" name="singup" value="Register">
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -91,9 +92,9 @@
     </section>
     <!-- Optional JavaScript -->
     <script src="my_script.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/validation/jquery.validate.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
 </body>
 
 </html>

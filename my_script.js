@@ -63,81 +63,123 @@ function Login()
 function singup()
 {
     $(document).on('click', '.singup', function (){
-        var name = $("#name").val();
-        var email = $("#email").val();
-        var pass = $("#password").val();
-        var conPass = $("#conPassword").val();
-
-        if(name =="" || email =="" || pass=="" || conPass =="")
-        {
-            if(name == "")
-            {
-                $("#messageName").html("Please Enter Your Name");
-            }
-    
-            if (email == "")
-            {   
-                $("#messageEmail").html("Please Enter Your Email");
-            }
-
-            if (pass == "")
-            {
-                $("#messagePassword").html("Please Enter Your Password");
-            }
-    
-            if (conPass == "")
-            {
-                $("#messageRepeatPassword").html("Please Enter Repeat your password");
-            }
-        }
-
-        else if(name !="" || email !="" || pass!="" || conPass !="")
-        {
-            $("#messageName").html("");
-            $("#messageEmail").html("");
-            $("#messagePassword").html("");
-            $("#messageRepeatPassword").html("");
-
-            if(pass != conPass)
-            {
-                $("#RepeatPassword").html("Password Not Match");
-            }
-
-            else
-            {
-                $("#RepeatPassword").html("");
-
+        $.validator.setDefaults({
+            submitHandler:function() {
                 $.ajax({
                     url:'PHP/register.php',
                     type:'post',
-                    data:{sendName:name, sendPass:pass, sendEmail:email, sendconPass:conPass},
+                    data:$("#Siform").serialize(),
     
                     success:function(d){
-                        $("#messageSuccess").html(d)
-                        $("#form").trigger('reset');
-                        
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your account has been created',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        $("#Siform").trigger('reset');
                     }
                 });
             }
-        }
+        })
+
+        $("#Siform").validate({
+            errorClass: 'error',
+            rules:{
+                sendName:"required",
+                sendEmail:{
+                    email:true,
+                    required:true
+                },
+                sendPass:{
+                    required:true,
+                    minlength:5
+                },
+                sendconPass:{
+                    required:true,
+                    minlength:5,
+                    equalTo:"#sendPass"
+                }
+            },
+            messages:{
+                sendName:"Pleas Enter Your Name",
+                sendEmail:{
+                    email:"Please Enter The Valid Email Address",
+                    required:"Please Enter Your Email Id"
+                },
+                sendPass:{
+                    required:"Please Enter Your Password",
+                    minlength:"Password Length Must be 5"
+                },
+                sendconPass:{
+                    required:"Please Enter Your Confirm Password",
+                    minlength:"Password Length Must be 5",
+                    equalTo:"Mismatch Password"
+                }
+            }
+        })
     });
 }
 
 function insert()
 {
     $(document).on('click', '.save', function () {
-        $.ajax({
-            url:'PHP/insert.php',
-            type:'post',
-            data:$("#save").serialize(),
-
-            success:function (d)
-            {
-                $("#successMessage").html(d)
-                $("#save").trigger('reset');
-                loadTable();
+        $.validator.setDefaults({
+            submitHandler:function() {
+                $.ajax({
+                    url:'PHP/insert.php',
+                    type:'post',
+                    data:$("#save").serialize(),
+        
+                    success:function (d)
+                    {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        $("#save").trigger('reset');
+                        $("#addEmployeeModal").modal('hide');
+                        loadTable();
+                    }
+                });
             }
-        });
+        })
+
+        $("#save").validate({
+            errorClass: 'error',
+            rules:{
+                name:"required",
+                email:{
+                    email:true,
+                    required:true
+                },
+                address:"required",
+                phone:{
+                    required:true,
+                    digits:true,
+                    maxlength:10,
+                    minlength:10
+                }
+            },
+            messages:{
+                name:"Pleas Enter Your Name",
+                email:{
+                    email:"<span style='color:red'>Please Enter The Valid Email Address</span>",
+                    required:"Please Enter Your Email Id"
+                },
+                address:"Please Enter Your Address",
+                phone:{
+                    required:"Please Enter Your Contact number",
+                    digits:"Cotact No Must Be numeric",
+                    maxlength:"length Must 10",
+                    minlength:"length must 10"
+                }
+            }
+        })
     });
 }
 
@@ -166,19 +208,63 @@ function update()
         $("#editPhone").val(trimPhone);
 
         $("#editEmployeeModal").modal('toggle');
+        $("#updateMessage").html("");
 
         $(document).on('click', '.update', function () {
-            $.ajax({
-                url:'PHP/update.php',
-                type:'post',
-                data:$("#update").serialize(),
-                success:function (d)
-                {
-                    $("#updateMessage").html(d)
-                    $("#update").trigger('reset');
-                    loadTable();
+            $.validator.setDefaults({
+                submitHandler:function() {
+                    $.ajax({
+                        url:'PHP/update.php',
+                        type:'post',
+                        data:$("#update").serialize(),
+                        success:function (d)
+                        {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your work has been updated',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            
+                            $("#editEmployeeModal").modal('hide');
+                            loadTable();
+                        }
+                    });
                 }
-            });
+            })
+
+            $("#update").validate({
+                errorClass: 'error',
+                rules:{
+                    editName:"required",
+                    editEmail:{
+                        email:true,
+                        required:true
+                    },
+                    editAddress:"required",
+                    editPhone:{
+                        required:true,
+                        digits:true,
+                        maxlength:10,
+                        minlength:10
+                    }
+                },
+                messages:{
+                    editName:"Pleas Enter Your Name",
+                    editEmail:{
+                        email:"<span style='color:red'>Please Enter The Valid Email Address</span>",
+                        required:"Please Enter Your Email Id"
+                    },
+                    editAddress:"Please Enter Your Address",
+                    editPhone:{
+                        required:"Please Enter Your Contact number",
+                        digits:"Cotact No Must Be numeric",
+                        maxlength:"length Must 10",
+                        minlength:"length must 10"
+                    }
+                }
+            })
         });
     });
 }
@@ -199,8 +285,18 @@ function delet()
     
                 success:function (d)
                 {
-                    loadTable();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your data has been deleted',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    
                     $("#deleteEmployeeModal").modal('hide');
+                    
+                    loadTable();
+                    
                 }
             });
         });
