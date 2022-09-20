@@ -1,4 +1,4 @@
-<h1 align="center">CRUD-Application</h1>
+<h1 align="center">PHP CRUD Operations with MySQL Database</h1>
 
 ### Introduction
 
