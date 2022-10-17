@@ -2,8 +2,7 @@
 
 ### Introduction
 
-<p align="justify">I have created simple PHP ajax CRUD application using by MySQL, Bootstrap & jQuery DataTables. 
-If you want to have an account in this page you can create your own account, or you can use my account and add details in to the table.</p>
+<p align="justify">I have created a simple PHP ajax CRUD application using MySQL, Bootstrap & jQuery DataTables. If you want to have an account on this page, you can either create your own or use my account and fill out the table with details.</p>
 
 <p>Username : Asky </br>
 Password: Asky1997 </p>
