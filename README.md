@@ -15,7 +15,7 @@ https://asky97.000webhostapp.com/ </p>
 *Features to be implemented in the CRUD-Application*
 
 <ol>
-  <li>user registration</li>
+  <li>user registratio</li>
   <li>user login </li>
   <li>A user can create, read, update, and delete information. </li>
 </ol>
